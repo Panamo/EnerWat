@@ -11,8 +11,12 @@ class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    phone_number = models.CharField(validators=[phone_regex, ])
+    phone_number = models.CharField(validators=[phone_regex, ], max_length=20)
     university = models.CharField(max_length=255)
     major = models.CharField(max_length=255)
     user_name = models.CharField(max_length=255)
     password = models.CharField(max_length=25)
+
+
+class Article(models.Model):
+    writer_id = models.IntegerField()
