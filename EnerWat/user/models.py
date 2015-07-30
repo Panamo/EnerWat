@@ -13,6 +13,7 @@ class User(AbstractUser):
     major = models.CharField(max_length=255, verbose_name='major')
 
     AbstractUser._meta.get_field_by_name('email')[0]._unique = True
+    AbstractUser._meta.get_field_by_name('email')[0].blank = False
 
 
 class Article(models.Model):
