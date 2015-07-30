@@ -30,9 +30,15 @@ def signup(request):
 
 def login(request):
     if request.method == 'GET':
-        pass
+        return render(request, 'signin.html',{
+            'false_user' : False
+        })
     if request.method == 'POST':
         form = LoginForm(request.POST)
+
+        email_empty = False
+        password_empty = False
+        false_user = False
 
         if form.is_valid():
             username = form.cleaned_data['email']
@@ -41,10 +47,21 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user:
                 django_login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/user')
             else:
-                return HttpResponseRedirect('/user_invalid')
+                false_user = True
+                return render(request, 'signin.html', {
+                    'false_user':false_user
+                }) # render login page with errors
         else:
-            return render(request, 'index.html', {'form': form})
+            if not request.POST.get('email', None):
+                email_empty = True
+            if not request.POST.get('password', None):
+                password_empty = True
+            
+            return render(request, 'signin.html', {
+                'password_empty' : password_empty,
+                'email_empty' : email_empty
+            }) # render login page with errors
     else:
         return HttpResponseRedirect('/kire_khar')

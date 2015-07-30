@@ -8,3 +8,8 @@ def main(request):
     return render(request, 'index.html', {
         'form': login_model_form
     })
+
+
+def contact(request):
+	pass
+	

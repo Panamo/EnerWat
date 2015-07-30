@@ -2,13 +2,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>EnerWat</title>
+    <title>EnerWat2016</title>
     {% if request.user.is_authenticated %}
         <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
     {% else %}
         <link href="{% static 'css/style2.css' %}" rel="stylesheet" type="text/css" media="all"/>
     {% endif %}
-    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'js/rhinoslider-1.02.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousewheel.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
@@ -24,18 +24,22 @@
 <body>
 <header class="header">
     <div class="wrap">
-        <div class="logo"><img src="{% static 'images/IMG.png' %}"><a href="index.html">Ener Wat</a></div>
+        <div class="logo"><img src="{% static 'images/IMG.png' %}"><a href="/">EnerWat 2016</a></div>
         <div class="clear"></div>
-        <div class="nav">
+        <nav class="nav">
             <ul>
-                <li><a href="{% static 'index.html' %}">Home</a></li>
-                <li><a href="{% static 'single.html' %}">Articles</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Our Works</a></li>
-                <li><a href="{% static 'contact.html' %}">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/user/">Profile</a></li>
+                {% else %}
+                    <li><a href="/login/">Sign-In</a></li>
+                {% endif %}
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/cultural">Cultural</a></li>
+                <li><a href="/contact">Contact Us</a></li>
             </ul>
             <div class="clear"></div>
-        </div>
+        </nav>
     </div>
 </header>
 <div class="wrap">
@@ -54,23 +58,20 @@
 
                 <form class="cmxform" id="contactForm" method="POST" action="/login/">
                     {% csrf_token %}
-                    <table>
-                        {{ form.as_table }}
-                        {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <div class="alert alert-error">
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                            {% for error in form.non_field_errors %}
-                                <div class="alert alert-error">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    </table>
+                    
+                    <div>
+                        <span><label for="email">Email</label></span>
+                        <span><input type="text" id="name" name="email" /></span>
+                        
+                    </div>
+
+                    <div>
+                        <span><label for="password">Password</label></span>
+                        <span><input type="password" id="email" name="password" /></span>
+                        
+                    </div>
+                    
+
                     <div>
                         <span><input class="submit" type="submit" value="Submit"/></span>
                     </div>
