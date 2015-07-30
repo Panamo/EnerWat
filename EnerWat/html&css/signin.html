@@ -6,48 +6,51 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<div id="wrapper">
-			<header class="header">
-        	<div class="wrap">
+		<header class="header">
+			<div class="wrap">
 				<div class="logo"><img src="images/IMG.png"></img><a href="index.html">Ener Wat</a></div>
-            	<div class="clear"></div>
-            	<div class="nav">
-                	<ul>
-                    	<li><a href="index.html">Home</a></li>
-                    	<li><a href="single.html">Articles</a></li>
-                    	<li><a href="#">Services</a></li>
-                    	<li><a href="#">Our Works</a></li>
-                    	<li><a href="contact.html">Contact</a></li>
-                	</ul>
-                	<div class="clear"></div>
-            	</div>
-        	</div>
+				<div class="clear"></div>
+				<div class="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="single.html">Articles</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Our Works</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
     	</header>
-
-			<div id="extraDiv"></div>
-
-			<div class="img_container"> 
-				<img class="mid_img" src="img/logo.png"></img>
+	
+		<div class="wrap">
+    		<div class="content">
+				<div class="sl-box">
+					<h1>Login</h1>
+					<form class="cmxform" id="contactForm" method="post" >
+						<div>
+							<span><label for="email">Email</label></span>
+							<span><input type="text" id="name" name="name" /></span>
+						</div>
+						<div>
+							<span><label for="password">Password</label></span>
+							<span><input type="password" id="email" name="email" /></span>
+						</div>
+						<div>
+							<span><input class="submit" type="submit" value="Login"/></span>
+						</div>
+					</form>
+					<a href="signup.html">Creat new account</a>
+				</div>
 			</div>
-			<h2 class="center">Sign in with your Account</h2>
-			<div class="login">
-				<h1>Login</h1>
-				<form method="post" action="">
-					<div><input type="text" name="login" value="" placeholder="Username or Email" class="input"></div>
-					<div><input type="password" name="password" value="" placeholder="Password" class="input"></div>
-					<div><input type="submit" name="commit" value="Login" class="login_button"></div>
-					<div><a href="signup.html">Creart new account</a>
-						<br>
-						<a href="forget.html">Forgot my password</a></div>
-				</form>
-			</div>
-	<footer class="footer">
-         <div class="wrap">
-           <div class="f-menu">
-                <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com" style = "color: red">Chapna</a> </div>
-			</div>
-        </div>
-    </footer>
 		</div>
+			
+		<footer class="footer">
+        	<div class="wrap">
+           		<div class="f-menu">
+               		<div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com" style = "color: red">Chapna</a> </div>
+				</div>
+        	</div>
+    	</footer>
 	</body>
 </html>
