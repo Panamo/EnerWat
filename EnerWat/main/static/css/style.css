@@ -121,7 +121,7 @@ body {
     margin: 25px 0;
     color: #000; /* Company name color */
     font-size: 40px;
-    float: left;
+/*     float: left; */
     text-transform: uppercase;
 }
 
@@ -280,7 +280,7 @@ body {
 .b-box {
     position: relative;
     padding: 20px 40px;
-    margin-right: 300px;
+/*     margin-right: 300px; */
     background: #4ba2d0; /* box background */
     -webkit-box-shadow: 1px 2px 3px #000;
     -moz-box-shadow: 1px 2px 3px #111;
@@ -313,7 +313,7 @@ body {
     position: absolute;
     padding: 20px;
     width: 250px;
-    height: 150px;
+    height: 250px;
     text-align: center;
     margin-left: 700px;
     background: #4ba2d0; /* box background */
@@ -377,6 +377,7 @@ body {
 .f-menu {
     position: relative;
     margin: 1.8em 0;
+    height: 35px;
     background: #126e9f; /* footer background */
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
@@ -405,7 +406,10 @@ body {
 
 .copy {
     position: absolute;
-    right: 10px;
+/*    display: block;*/
+/*    align-content: center;*/
+/*    right: 10px;*/
+    margin-left: 400px;
     top: 13px;
     color: #7cccf7; /* footer CP text */
     font-size: 12px;
@@ -511,17 +515,17 @@ form select:focus {
 
 .content form input[type=submit] {
     cursor: pointer;
-    color: #8A0;
-    background: #2c251f;
+    color: #000;
+    background: #1582bc;
     padding: 8px 15px;
-    border: 1px solid #564437;
+    border: 1px solid #000;
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
     border-radius: .3em;
 }
 
 .content form input[type=submit]:hover {
-    background: #564437;
+    background: #126e9f;
 }
 
 .content form textarea {

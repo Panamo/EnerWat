@@ -41,10 +41,10 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user:
                 django_login(request, user)
-                return HttpResponseRedirect('/user_valid')
+                return HttpResponseRedirect('/')
             else:
                 return HttpResponseRedirect('/user_invalid')
         else:
-            return HttpResponseRedirect("/invalid_form")
+            return render(request, 'index.html', {'form': form})
     else:
-        return HttpResponseRedirect('/invalid_method')
+        return HttpResponseRedirect('/kire_khar')

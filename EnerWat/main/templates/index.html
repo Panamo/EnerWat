@@ -1,16 +1,14 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 {% load staticfiles %}
 <!DOCTYPE HTML>
 <html>
 <head>
     <title>EnerWat</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    {% if request.user.is_authenticated %}
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    {% else %}
+        <link href="{% static 'css/style2.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    {% endif %}
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> -->
     <script type="text/javascript" src="{% static 'js/rhinoslider-1.02.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousewheel.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
@@ -24,31 +22,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script> -->
 </head>
 <body>
-<div class="header">
+<header class="header">
     <div class="wrap">
-        <div class="logo"><a href="index.html">Company Name</a></div>
-        <div class="phone">
-            <ul>
-                <li><span class="icon mob"></span>Contact :</li>
-                <li><span class="icon mail"></span>Email :</li>
-            </ul>
-        </div>
+        <div class="logo"><img src="{% static 'images/IMG.png' %}"><a href="index.html">Ener Wat</a></div>
         <div class="clear"></div>
         <div class="nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="single.html">About</a></li>
+                <li><a href="{% static 'index.html' %}">Home</a></li>
+                <li><a href="{% static 'single.html' %}">Articles</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Our Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{% static 'contact.html' %}">Contact</a></li>
             </ul>
             <div class="clear"></div>
         </div>
     </div>
-</div>
+</header>
 <div class="wrap">
     <div class="content">
-        <!--             <div class="slide-box">
+        <!--            <div class="slide-box">
                         <ul id="slider">
                             <li><img src="images/300.jpeg/" /></li>
                             <li><img src="images/300.jpeg/" /></li>
@@ -56,18 +48,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><img src="images/300.jpeg/" /></li>
                         </ul>
                     </div> -->
-        <div class="s-box">
-            <h1>Login</h1>
+        {% if not request.user.is_authenticated %}
+            <div class="s-box">
+                <h1>Login</h1>
 
-            <form method="post" action="/login/">
-                {% csrf_token %}
-                <table>
-                    {{ form.as_table }}
-                </table>
-                <br/>
-                <input type="submit" value="Login"/>
-            </form>
-        </div>
+                <form class="cmxform" id="contactForm" method="POST" action="/login/">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-error">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                    <div>
+                        <span><input class="submit" type="submit" value="Submit"/></span>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
         <div class="b-box">
             <h1>About</h1>
 
@@ -93,20 +102,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </div>
-<div class="footer">
+<footer class="footer">
     <div class="wrap">
         <div class="f-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Our Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
             <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com"
                                                                          style="color: red">Chapna</a></div>
         </div>
     </div>
-</div>
+</footer>
 </body>
 </html>
