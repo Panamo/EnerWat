@@ -20,14 +20,10 @@ class SignupModelForm(forms.ModelForm):
         exclude = []
 
 
-class LoginModelForm(forms.ModelForm):
+class LoginModelForm(forms.Form):
+    email = forms.CharField(widget=forms.TextInput, label="Email", max_length=255)
+    password = forms.CharField(widget=forms.PasswordInput, label="Password")
+
     class Meta:
         model = User
-        widgets = {
-            'password': forms.PasswordInput(),
-        }
-        labels = {
-            'email': "Email",
-            'password': "Password"
-        }
         fields = ['email', 'password']
