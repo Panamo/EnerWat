@@ -17,7 +17,15 @@ class SignupModelForm(forms.ModelForm):
             'major': "Major",
             'password': "Password"
         }
-        exclude = ['username']
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'university',
+            'major',
+            'password'
+        ]
 
 
 class LoginForm(forms.Form):

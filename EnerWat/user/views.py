@@ -9,7 +9,7 @@ from .models import User
 # Create your views here.
 def signup(request):
     if request.method == 'GET':
-        pass
+        return render(request, 'signup.html', {'form': SignupModelForm()})
     if request.method == 'POST':
         form = SignupModelForm(request.POST)
 
