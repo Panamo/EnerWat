@@ -23,7 +23,3 @@ class SignupModelForm(forms.ModelForm):
 class LoginModelForm(forms.Form):
     email = forms.CharField(widget=forms.TextInput, label="Email", max_length=255)
     password = forms.CharField(widget=forms.PasswordInput, label="Password")
-
-    class Meta:
-        model = User
-        fields = ['email', 'password']
