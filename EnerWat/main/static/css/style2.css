@@ -278,7 +278,6 @@ body {
 }
 
 .b-box {
-    position: relative;
     padding: 20px 40px;
     margin-right: 300px;
     background: #4ba2d0; /* box background */
