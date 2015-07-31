@@ -1,3 +1,6 @@
+#ignore uploaded files
+EnerWat/users_photo
+
 # Ignore db files
 *.sqlite3
 
