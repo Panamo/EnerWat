@@ -9,6 +9,7 @@ class SignupModelForm(forms.ModelForm):
         model = User
         widgets = {
             'password': forms.PasswordInput(),
+            'photo': forms.FileInput()
         }
         fields = [
             'title',
@@ -24,7 +25,8 @@ class SignupModelForm(forms.ModelForm):
             'country',
             'city',
             'postal_address',
-            'password'
+            'password',
+            'photo'
         ]
 
 

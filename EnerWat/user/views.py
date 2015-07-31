@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as django_login
+
 from .forms import LoginForm
 from .forms import SignupModelForm
 from .models import User
@@ -11,7 +12,7 @@ def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {'form': SignupModelForm()})
     if request.method == 'POST':
-        form = SignupModelForm(request.POST)
+        form = SignupModelForm(request.POST, request.FILES)
 
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -28,13 +29,14 @@ def signup(request):
             country = form.cleaned_data['country']
             city = form.cleaned_data['city']
             postal_address = form.cleaned_data['postal_address']
+            photo = request.FILES['photo']
 
             user = User.objects.create_user(email, email, password, title=title, first_name=first_name,
                                             last_name=last_name,
                                             phone_number=phone_number, mobile_number=mobile_number,
                                             degree=degree, education=education, field_of_study=field_of_study,
                                             reg_type=reg_type, country=country, city=city,
-                                            postal_address=postal_address)
+                                            postal_address=postal_address, photo=photo)
             user.save()
             return HttpResponseRedirect('signup_valid')
         else:
