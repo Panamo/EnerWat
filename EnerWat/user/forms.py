@@ -3,27 +3,27 @@ from .models import User
 
 
 class SignupModelForm(forms.ModelForm):
+    re_password = forms.CharField(widget=forms.PasswordInput, required=True)
+
     class Meta:
         model = User
         widgets = {
             'password': forms.PasswordInput(),
         }
-        labels = {
-            'first_name': "First Name",
-            'last_name': "Last Name",
-            'email': "Email",
-            'phone_number': "Phone Number",
-            'university': "University",
-            'major': "Major",
-            'password': "Password"
-        }
         fields = [
+            'title',
             'first_name',
             'last_name',
             'email',
             'phone_number',
             'university',
-            'major',
+            'education',
+            'degree',
+            'field_of_study',
+            'reg_type',
+            'country',
+            'city',
+            'postal_address',
             'password'
         ]
 
