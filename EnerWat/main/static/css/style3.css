@@ -1,6 +1,6 @@
 @font-face {
     font-family: Abel-Regular ;
-    src: url( ../fonts/Abel-Regular.ttf ) format("truetype");
+    src: url(../fonts/Abel-Regular.ttf) format("truetype");
 }
 
 /* reset */
@@ -16,8 +16,8 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas,
-details, embed, 
-figure, figcaption, footer, header, hgroup, 
+details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav,
 output, ruby, section, summary,
 time, mark, audio, video {
@@ -31,7 +31,7 @@ time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 article, aside,
-details, figcaption, figure, 
+details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -121,7 +121,7 @@ body {
     margin: 25px 0;
     color: #000; /* Company name color */
     font-size: 40px;
-/*     float: left; */
+    /*     float: left; */
     text-transform: uppercase;
 }
 
@@ -280,7 +280,7 @@ body {
 .b-box {
     position: relative;
     padding: 20px 40px;
-/*     margin-right: 300px; */
+    /*     margin-right: 300px; */
     background: #4ba2d0; /* box background */
     -webkit-box-shadow: 1px 2px 3px #000;
     -moz-box-shadow: 1px 2px 3px #111;
@@ -310,14 +310,13 @@ body {
 }
 
 .sl-box {
-    position: relative;
-	display: block;
+    display: block;
     padding: 20px;
     width: 250px;
     height: 270px;
     text-align: center;
     margin-left: 350px;
-	margin-bottom: 30px; 
+    margin-bottom: 30px;
     background: #4ba2d0; /* box background */
     -webkit-box-shadow: 1px 2px 3px #000;
     -moz-box-shadow: 1px 2px 3px #111;
@@ -337,13 +336,13 @@ body {
 
 .su-box {
     position: relative;
-	display: block;
+    display: block;
     padding: 20px;
     width: 250px;
     height: 630px;
     text-align: center;
     margin-left: 350px;
-	margin-bottom: 30px; 
+    margin-bottom: 30px;
     background: #4ba2d0; /* box background */
     -webkit-box-shadow: 1px 2px 3px #000;
     -moz-box-shadow: 1px 2px 3px #111;
@@ -362,7 +361,6 @@ body {
 }
 
 .s-box {
-    position: relative;
     padding: 20px;
     width: 250px;
     height: 250px;
@@ -458,9 +456,9 @@ body {
 
 .copy {
     position: absolute;
-   display: block;
-/*    align-content: center;*/
-/*    right: 10px;*/
+    display: block;
+    /*    align-content: center;*/
+    /*    right: 10px;*/
     margin-left: 400px;
     top: 13px;
     color: #7cccf7; /* footer CP text */
