@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>News</h1>
+<ul>
+    {% for news in object_list %}
+        <li><a href="/news/{{ news.pk }}">{{ news.date|date }} - {{ news.subject }}</a></li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

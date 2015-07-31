@@ -11,5 +11,4 @@ def main(request):
 
 
 def contact(request):
-	pass
-	
+    pass
