@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
@@ -28,15 +29,58 @@
     <div class="wrap">
         <div class="logo"><img src="{% static 'images/IMG.png' %}"/><a href="/">EnerWat </a></div>
         <div class="clear"></div>
-        <div class="nav">
+        <nav class="nav" id="top-nav">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/login">Sign-in</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Our Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/user/">Profile</a></li>
+                {% else %}
+                    <li><a href="/login/">Sign-In</a></li>
+                {% endif %}
+
+                <li>
+                    <a href="#">Seminar Information</a>
+                    <ul>
+                        <li><a href="/note">Manager Note</a></li>
+                        <li class="last"><a href="/committee">Seminar Committee</a></li>
+                        <li class="last"><a href="/goals">Seminar Goals</a></li>
+                        <li class="last"><a href="/bases">Seminar Bases</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Programs</a>
+                    <ul>
+                        <li class="last"><a href="/speakers">Keynote Speakers</a></li>
+                        <li class="last"><a href="competition">Competition</a></li>
+                        <li class="last"><a href="/workshops">Workshops</a></li>
+                        <li class="last"><a href="/exhibition">Exhibition</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/articles">Papers</a>
+                    <ul>
+                        <li class="last"><a href="/guide">Guide for Authors</a></li>
+                        <li class="last"><a href="/submit-paper">Submit Paper</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Cultural</a>
+                    <ul>
+                        <li class="last"><a href="/images">Images</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/news">News</a>
+                </li>
+
+                <li><a href="/contact">Contact Us</a></li>
             </ul>
             <div class="clear"></div>
+        </nav>
         </div>
     </div>
 </header>
@@ -47,14 +91,14 @@
 
             <form method="POST" action="/submit-paper/" class="cmxform">
                 {% csrf_token %}
-                <table style="width: 50%">
+                <table style="width: 75%">
                     <tr>
                         <td>
                             <label for="title">Title</label>
                         </td>
                         <td>
                             <input type="text" class="form-control" name="title"
-                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                                   style="width: 100%; margin-top: 1.5%; height: 30px; font-family: monospace" required>
                         </td>
                     </tr>
 
@@ -64,19 +108,29 @@
                         </td>
                         <td>
                             <input type="text" class="form-control" name="keywords"
-                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                                   style="width: 100%; margin-top: 1.5%; height: 30px; font-family: tahoma" placeholder="please separate keywords by semicolon(;)" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for=" writers">List of Writers</label>
+                            <label for="author">Authors</label>
                         </td>
                         <td>
-                            <textarea class="form-control" name="writers" rows="4" cols="5"
-                                      style="margin-top: 1.5%; resize: none" required></textarea>
+                            <textarea class="form-control" name="authors" rows="4" cols="10"
+                                      style="margin-top: 1.5%; resize: none; font-family: tahoma" placeholder="One Author per line" required></textarea>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>
+                            <label for="upload">Upload Paper</label>
+                        </td>
+                        <td>
+                            <input type="file" name="paper_file" style="margin-top: 1.5%" required>
+                        </td>
+                    </tr>
+
                 </table>
                 <input class="btn btn-default" type="submit" value="Submit">
             </form>
