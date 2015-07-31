@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^login/', 'user.views.login'),
     url(r'^api/get-news/(?P<id>\d+)', 'api.views.get_news'),
     url(r'^contact', 'main.views.contact'),
+    url(r'^submit-paper', 'user.views.paper'),
 ]
