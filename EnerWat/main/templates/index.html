@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>EnerWat2016</title>
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
     {% if request.user.is_authenticated %}
         <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
     {% else %}
@@ -26,7 +27,7 @@
     <div class="wrap">
         <div class="logo"><img src="{% static 'images/IMG.png' %}"><a href="/">EnerWat 2016</a></div>
         <div class="clear"></div>
-        <nav class="nav">
+        <nav class="nav" id="top-nav">
             <ul>
                 <li><a href="/">Home</a></li>
                 {% if request.user.is_authenticated %}
@@ -34,7 +35,12 @@
                 {% else %}
                     <li><a href="/login/">Sign-In</a></li>
                 {% endif %}
-                <li><a href="/articles">Articles</a></li>
+                <li>
+                    <a href="/articles">Articles</a>
+                    <ul>
+                        <li class="last"><a>Parham</a></li>
+                    </ul>
+                </li>
                 <li><a href="/cultural">Cultural</a></li>
                 <li><a href="/contact">Contact Us</a></li>
             </ul>
@@ -58,19 +64,19 @@
 
                 <form class="cmxform" id="contactForm" method="POST" action="/login/">
                     {% csrf_token %}
-                    
+
                     <div>
                         <span><label for="email">Email</label></span>
-                        <span><input type="text" id="name" name="email" /></span>
-                        
+                        <span><input type="text" id="name" name="email"/></span>
+
                     </div>
 
                     <div>
                         <span><label for="password">Password</label></span>
-                        <span><input type="password" id="email" name="password" /></span>
-                        
+                        <span><input type="password" id="email" name="password"/></span>
+
                     </div>
-                    
+
 
                     <div>
                         <span><input class="submit" type="submit" value="Submit"/></span>
