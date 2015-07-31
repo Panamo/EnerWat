@@ -88,7 +88,7 @@
         <div class="su-box">
             <h1>Register</h1>
 
-            <form method="POST" action="/signup/" class="cmxform">
+            <form method="POST" action="/signup/" class="cmxform" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% if form.errors %}
                     {% for field in form %}

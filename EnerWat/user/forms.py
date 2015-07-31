@@ -5,6 +5,15 @@ from .models import User
 class SignupModelForm(forms.ModelForm):
     conf_password = forms.CharField(widget=forms.PasswordInput, required=True)
 
+    def clean_photo(self):
+        photo = self.cleaned_data.get('photo', False)
+        if photo:
+            if photo.size > 500 * 1024:
+                raise forms.ValidationError("Image file too large ( > 500kB )")
+            return photo
+        else:
+            raise forms.ValidationError("Couldn't read uploaded image")
+
     class Meta:
         model = User
         widgets = {
