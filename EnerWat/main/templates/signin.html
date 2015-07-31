@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Sign in</title>
+		<link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
 	</head>
 	<body>
@@ -11,17 +12,58 @@
 			<div class="wrap">
 				<div class="logo"><img src="{% static 'images/IMG.png' %}"></img><a href="/">EnerWat 2016</a></div>
 				<div class="clear"></div>
-				<div class="nav">
-					<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/login">Sign-in</a></li>
-                    <li><a href="/articles">Articles</a></li>
-                    <li><a href="/cultural">Cultural</a></li>
-                    <li><a href="/user">Profile</a></li>
-					<li><a href="#">About Us</a></li>
-					</ul>
-					<div class="clear"></div>
-				</div>
+				<nav class="nav" id="top-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/user/">Profile</a></li>
+                {% else %}
+                    <li><a href="/login/">Sign-In</a></li>
+                {% endif %}
+
+                <li>
+                    <a href="#">Seminar Information</a>
+                    <ul>
+                        <li><a href="/note">Manager Note</a></li>
+                        <li class="last"><a href="/committee">Seminar Committee</a></li>
+                        <li class="last"><a href="/goals">Seminar Goals</a></li>
+                        <li class="last"><a href="/bases">Seminar Bases</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Programs</a>
+                    <ul>
+                        <li class="last"><a href="/speakers">Keynote Speakers</a></li>
+                        <li class="last"><a href="competition">Competition</a></li>
+                        <li class="last"><a href="/workshops">Workshops</a></li>
+                        <li class="last"><a href="/exhibition">Exhibition</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/articles">Papers</a>
+                    <ul>
+                        <li class="last"><a href="/guide">Guide for Authors</a></li>
+                        <li class="last"><a href="/submit-paper">Submit Paper</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Cultural</a>
+                    <ul>
+                        <li class="last"><a href="/images">Images</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/news">News</a>
+                </li>
+
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            <div class="clear"></div>
+        </nav>
 			</div>
     	</header>
 	

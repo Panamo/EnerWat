@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^news/(?P<pk>\d+)', NewsDetailView.as_view(), name='news_detail'),
     url(r'^news$', NewsListView.as_view(), name='news_list'),
     url(r'^contact', 'main.views.contact'),
+    url(r'^submit-paper', 'user.views.paper'),
 ]

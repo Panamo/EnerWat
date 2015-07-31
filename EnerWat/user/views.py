@@ -80,3 +80,12 @@ def login(request):
             })  # render login page with errors
     else:
         return HttpResponseRedirect('/kire_khar')
+
+
+def paper(request):
+    if request.method == 'GET':
+        return render(request, 'send_paper.html', {})
+    if request.method == 'POST':
+        pass
+
+
