@@ -27,7 +27,7 @@ class User(AbstractUser):
     country = models.CharField(max_length=255, verbose_name='country')
     city = models.CharField(max_length=255, verbose_name='city')
     postal_address = models.TextField(verbose_name='postal address')
-    photo = models.ImageField(verbose_name='photo', upload_to='users_photo')
+    photo = models.ImageField(verbose_name='photo', upload_to='users_photo', blank=True)
 
     AbstractUser._meta.get_field_by_name('email')[0]._unique = True
     AbstractUser._meta.get_field_by_name('email')[0].blank = False
