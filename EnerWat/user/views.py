@@ -87,5 +87,3 @@ def paper(request):
         return render(request, 'send_paper.html', {})
     if request.method == 'POST':
         pass
-
-
