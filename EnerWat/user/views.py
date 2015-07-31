@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as django_login
+from django.views.generic.detail import DetailView
 
 from .forms import LoginForm
 from .forms import SignupModelForm
@@ -8,6 +9,11 @@ from .models import User
 
 
 # Create your views here.
+
+class UserDetailView(DetailView):
+    model = User
+
+
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {'form': SignupModelForm()})
@@ -29,7 +35,7 @@ def signup(request):
             country = form.cleaned_data['country']
             city = form.cleaned_data['city']
             postal_address = form.cleaned_data['postal_address']
-            photo = request.FILES['photo']
+            photo = request.FILES.get('photo', None)
 
             user = User.objects.create_user(email, email, password, title=title, first_name=first_name,
                                             last_name=last_name,
