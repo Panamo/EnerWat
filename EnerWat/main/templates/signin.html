@@ -39,21 +39,11 @@
 						{% endif %}
 						<div>
 							<span><label for="email">Email</label></span>
-							<span><input type="text" id="email" name="email" /></span>
-							{% if email_empty %}	
-							<span style="color:red">
-                        		please fill in this field.
-                        	</span>
-							{% endif %}
+							<span><input type="email" id="email" name="email" required/></span>
 						</div>
 						<div>
 							<span><label for="password">Password</label></span>
-							<span><input type="password" id="password" name="password" /></span>
-							{% if password_empty %}	
-							<span style="color:red">
-                        		please fill in this field.
-                        	</span>
-							{% endif %}
+							<span><input type="password" id="password" name="password" required/></span>
 						</div>
 						<div>
 							<span><input class="submit" type="submit" value="Login"/></span>
