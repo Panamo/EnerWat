@@ -11,8 +11,6 @@ class SignupModelForm(forms.ModelForm):
             if photo.size > 500 * 1024:
                 raise forms.ValidationError("Image file too large ( > 500kB )")
             return photo
-        else:
-            raise forms.ValidationError("Couldn't read uploaded image")
 
     class Meta:
         model = User
