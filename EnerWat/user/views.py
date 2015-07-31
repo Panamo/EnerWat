@@ -21,7 +21,6 @@ def signup(request):
             email = form.cleaned_data['email']
             phone_number = form.cleaned_data['phone_number']
             mobile_number = form.cleaned_data['mobile_number']
-            university = form.cleaned_data['university']
             education = form.cleaned_data['education']
             degree = form.cleaned_data['degree']
             field_of_study = form.cleaned_data['field_of_study']
@@ -33,14 +32,13 @@ def signup(request):
             user = User.objects.create_user(email, email, password, title=title, first_name=first_name,
                                             last_name=last_name,
                                             phone_number=phone_number, mobile_number=mobile_number,
-                                            university=university,
                                             degree=degree, education=education, field_of_study=field_of_study,
                                             reg_type=reg_type, country=country, city=city,
                                             postal_address=postal_address)
             user.save()
             return HttpResponseRedirect('signup_valid')
         else:
-            return HttpResponseRedirect('form invalid')
+            return render(request, 'signup.html', {'form': form})
 
 
 def login(request):

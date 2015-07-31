@@ -12,7 +12,6 @@ class User(AbstractUser):
                              choices=[('prof', 'Prof.'), ('dr', 'Dr.'), ('mr', 'Mr.'), ('mrs', 'Mrs.')])
     phone_number = models.CharField(validators=[phone_regex, ], max_length=20, verbose_name='phone number')
     mobile_number = models.CharField(validators=[phone_regex, ], max_length=20, verbose_name='mobile number')
-    university = models.CharField(max_length=255, verbose_name='university')
     education = models.CharField(max_length=255, verbose_name='education',
                                  choices=[('phd', 'PhD'), ('md', 'MD'), ('phd_can', 'PhD Candidate'),
                                           ('msc', 'MSc'), ('msc_stu', 'MSc Student'), ('bsc', 'BSc'),

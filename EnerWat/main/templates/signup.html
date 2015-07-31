@@ -47,6 +47,21 @@
 
             <form method="POST" action="/signup/" class="cmxform">
                 {% csrf_token %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <div class="alert alert-error">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-error">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <table style="width: 50%">
                     <tr>
                         <td>
@@ -60,7 +75,7 @@
 
                     <tr>
                         <td>
-                            <label for="pass">Password</label><span class="star">*</span>
+                            <label for="password">Password</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="password" class="form-control" name="password"
@@ -70,7 +85,7 @@
 
                     <tr>
                         <td>
-                            <label for="conf_pass">Confirm Password</label><span class="star">*</span>
+                            <label for="conf_password">Confirm Password</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="password" class="form-control" name="conf_password"
@@ -90,18 +105,17 @@
                         </td>
                         <td>
                             <select name="title" class="form-control" style="width:25%">
-                                <option value="0" selected></option>
-                                <option value="Dr">Dr.</option>
-                                <option value="Prof">Prof.</option>
-                                <option value="Mr">Mr.</option>
-                                <option value="Mrs">Mrs.</option>
+                                <option value="dr">Dr.</option>
+                                <option value="prof">Prof.</option>
+                                <option value="mr">Mr.</option>
+                                <option value="mrs">Mrs.</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="fname">First Name</label><span class="star">*</span>
+                            <label for="first_name">First Name</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="text" class="form-control" name="first_name"
@@ -111,53 +125,53 @@
 
                     <tr>
                         <td>
-                            <label for="lname">Last Name</label><span class="star">*</span>
+                            <label for="last_name">Last Name</label><span class="star">*</span>
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="first_name"
+                            <input type="text" class="form-control" name="last_name"
                                    style="width: 75%; margin-top: 1.5%; height: 30px" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="edu">Education</label><span class="star">*</span>
+                            <label for="education">Education</label><span class="star">*</span>
                         </td>
                         <td>
                             <select class="form-control" name="education" style="width: 45%; margin-top:1.5%">
                                 <option value="0" selected>
                                 </option>
-                                <option value="1">PhD</option>
-                                <option value="2">MD</option>
-                                <option value="3">PhD Candidate</option>
-                                <option value="4">MSc</option>
-                                <option value="5">MSc Student</option>
-                                <option value="6">BSc</option>
-                                <option value="7">Other</option>
+                                <option value="phd">PhD</option>
+                                <option value="md">MD</option>
+                                <option value="phd_can">PhD Candidate</option>
+                                <option value="msc">MSc</option>
+                                <option value="msc_stu">MSc Student</option>
+                                <option value="bsc">BSc</option>
+                                <option value="other">Other</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="deg">Degree</label><span class="star">*</span>
+                            <label for="degree">Degree</label><span class="star">*</span>
                         </td>
                         <td>
                             <select class="form-control" name="degree" style="width: 50%; margin-top: 1.5%">
                                 <option value="0" selected>
                                 </option>
-                                <option value="1">Professor</option>
-                                <option value="2">Associate Professor</option>
-                                <option value="4">Assistant Professor</option>
-                                <option value="5">Instructor</option>
-                                <option value="6">Other</option>
+                                <option value="prof">Professor</option>
+                                <option value="assoc_prof">Associate Professor</option>
+                                <option value="assist_prof">Assistant Professor</option>
+                                <option value="instr">Instructor</option>
+                                <option value="other">Other</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="major">Field of Study</label><span class="star">*</span>
+                            <label for="field_of_study">Field of Study</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="text" class="form-control" name="field_of_study"
@@ -167,7 +181,7 @@
 
                     <tr>
                         <td>
-                            <label for="phone">Phone Number</label><span class="star">*</span>
+                            <label for="phone_number">Phone Number</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="text" class="form-control" name="phone_number"
@@ -177,7 +191,7 @@
 
                     <tr>
                         <td>
-                            <label for="mobile">Mobile Number</label><span class="star">*</span>
+                            <label for="mobile_number">Mobile Number</label><span class="star">*</span>
                         </td>
                         <td>
                             <input type="text" class="form-control" name="mobile_number"
@@ -187,14 +201,12 @@
 
                     <tr>
                         <td>
-                            <label for="regtype">Registration Type</label><span class="star">*</span>
+                            <label for="reg_type">Registration Type</label><span class="star">*</span>
                         </td>
                         <td>
                             <select class="form-control" name="reg_type" style="width: 30%; margin-top: 1.5%">
-                                <option value="0" selected>
-                                </option>
-                                <option value="1">General</option>
-                                <option value="2">Student</option>
+                                <option value="general">General</option>
+                                <option value="student">Student</option>
                             </select>
                         </td>
                     </tr>
@@ -223,17 +235,17 @@
                             <label for="city">City</label><span class="star">*</span>
                         </td>
                         <td>
-                            <input class="form-control" type="text" name="country"
+                            <input class="form-control" type="text" name="city"
                                    style="width: 75%; margin-top: 1.5%; height: 30px" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="addr">Postal Address</label><span class="star">*</span>
+                            <label for="postal_address">Postal Address</label><span class="star">*</span>
                         </td>
                         <td>
-                            <textarea class="form-control" name="addres" rows="4" cols="5"
+                            <textarea class="form-control" name="postal_address" rows="4" cols="5"
                                       style="margin-top: 1.5%; resize: none" required></textarea>
                         </td>
                     </tr>
