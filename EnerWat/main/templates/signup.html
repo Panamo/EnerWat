@@ -1,239 +1,256 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-		<!-- Latest compiled JavaScript -->
-		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		
-		<meta charset="UTF-8">
-		<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/style4.css' %}">
-		
-		<style>
-		.star{
-			display: inline;
-			color: red
-		}
-		</style>
-	
-	</head>
-	<body>
-		<header class="header">
-        	<div class="wrap">
-				<div class="logo"><img src="{% static 'images/IMG.png' %}"></img><a href="/">EnerWat </a></div>
-            	<div class="clear"></div>
-            	<div class="nav">
-                	<ul>
-                    	<li><a href="/">Home</a></li>
-                    	<li><a href="/login">Sign-in</a></li>
-                    	<li><a href="#">Services</a></li>
-                    	<li><a href="#">Our Works</a></li>
-                    	<li><a href="contact.html">Contact</a></li>
-                	</ul>
-                	<div class="clear"></div>
-            	</div>
-        	</div>
-		</header>
-		<div class="wrap">
-    		<div class="content">
-				<div class="su-box">
-					<h1>Register</h1>
-					<form method="POST" action="/signup/" class="cmxform">
-						{% csrf_token %}
-						<table style="width: 50%">
-							<tr>
-								<td>
-									<label for="email">Email</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="email" class="form-control" name="email" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
+    <!-- Latest compiled JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-							<tr>
-								<td>
-									<label for="pass">Password</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="password" class="form-control" name="password" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style4.css' %}">
 
-							<tr>
-								<td>
-									<label for="conf_pass">Confirm Password</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="password" class="form-control" name="conf_password" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
+    <style>
+        .star {
+            display: inline;
+            color: red
+        }
+    </style>
 
-							<tr><td><hr align="left" size="1" width="300%" /></td></tr>
-							
-							<tr>
-								<td>
-									<label for="title">Title:</label>
-								</td>
-								<td>
-									<select name="title" class="form-control" style="width:25%">
-										<option value="0" selected></option>
-										<option value="Dr">Dr.</option>
-										<option value="Prof">Prof.</option>
-										<option value="Mr">Mr.</option>
-										<option value="Mrs">Mrs.</option>
-									</select>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="fname">First Name</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="text" class="form-control" name="first_name" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="lname">Last Name</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="text" class="form-control" name="first_name" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="edu">Education</label><span class="star">*</span>	
-								</td>
-								<td>
-									<select class="form-control" name="education" style="width: 45%; margin-top:1.5%">
-										<option value="0" selected>
-										</option>
-										<option value="1" >PhD</option>
-										<option value="2" >MD</option>
-										<option value="3" >PhD Candidate</option>
-										<option value="4" >MSc</option>
-										<option value="5" >MSc Student</option>
-										<option value="6" >BSc</option>
-										<option value="7" >Other</option>	
-									</select>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="deg">Degree</label><span class="star">*</span>	
-								</td>
-								<td>
-									<select class="form-control" name="degree" style="width: 50%; margin-top: 1.5%">
-										<option value="0" selected>
-										</option>
-										<option value="1" >Professor</option>
-										<option value="2" >Associate Professor</option>
-										<option value="4" >Assistant Professor</option>
-										<option value="5" >Instructor</option>
-										<option value="6" >Other</option>
-									</select>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="major">Field of Study</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="text" class="form-control" name="major" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="phone">Phone Number</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="text" class="form-control" name="phone_number" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>	
-
-							<tr>
-								<td>
-									<label for="mobile">Mobile Number</label><span class="star">*</span>	
-								</td>
-								<td>
-									<input type="text" class="form-control" name="mobile_number" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="regtype">Registration Type</label><span class="star">*</span>	
-								</td>
-								<td>
-									<select class="form-control" name="reg_type" style="width: 30%; margin-top: 1.5%">
-										<option value="0" selected>
-										</option>
-										<option value="1" >General</option>
-										<option value="2" >Student</option>
-									</select>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="photo">Photo</label>
-								</td>
-								<td>
-									<input type="file" name="photo" accept="image/*" style="margin-top: 1.5%">
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="country">Country</label><span class="star">*</span>
-								</td>
-								<td>
-									<input class="form-control" type="text" name="country" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="city">City</label><span class="star">*</span>
-								</td>
-								<td>
-									<input class="form-control" type="text" name="country" style="width: 75%; margin-top: 1.5%; height: 30px" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<label for="addr">Postal Address</label><span class="star">*</span>
-								</td>
-								<td>
-									<textarea class="form-control" name="addres" rows="4" cols="5" style="margin-top: 1.5%; resize: none" required></textarea>
-								</td>
-							</tr>
-						</table>
-						<input class="btn btn-default" type="submit" value="Submit">
-					</form>
-				</div>
-			</div>
-		</div>
-	<footer class="footer">
-         <div class="wrap">
-           <div class="f-menu">
-                <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com" style = "color: red">Chapna</a> </div>
-			</div>
+</head>
+<body>
+<header class="header">
+    <div class="wrap">
+        <div class="logo"><img src="{% static 'images/IMG.png' %}"/><a href="/">EnerWat </a></div>
+        <div class="clear"></div>
+        <div class="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Sign-in</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Our Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="clear"></div>
         </div>
-    </footer>
-        <script src="js/signup.js"></script>
-	</body>
+    </div>
+</header>
+<div class="wrap">
+    <div class="content">
+        <div class="su-box">
+            <h1>Register</h1>
+
+            <form method="POST" action="/signup/" class="cmxform">
+                {% csrf_token %}
+                <table style="width: 50%">
+                    <tr>
+                        <td>
+                            <label for="email">Email</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="email" class="form-control" name="email"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="pass">Password</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="password" class="form-control" name="password"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="conf_pass">Confirm Password</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="password" class="form-control" name="conf_password"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <hr align="left" size="1" width="300%"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="title">Title:</label>
+                        </td>
+                        <td>
+                            <select name="title" class="form-control" style="width:25%">
+                                <option value="0" selected></option>
+                                <option value="Dr">Dr.</option>
+                                <option value="Prof">Prof.</option>
+                                <option value="Mr">Mr.</option>
+                                <option value="Mrs">Mrs.</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="fname">First Name</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="first_name"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="lname">Last Name</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="first_name"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="edu">Education</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <select class="form-control" name="education" style="width: 45%; margin-top:1.5%">
+                                <option value="0" selected>
+                                </option>
+                                <option value="1">PhD</option>
+                                <option value="2">MD</option>
+                                <option value="3">PhD Candidate</option>
+                                <option value="4">MSc</option>
+                                <option value="5">MSc Student</option>
+                                <option value="6">BSc</option>
+                                <option value="7">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="deg">Degree</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <select class="form-control" name="degree" style="width: 50%; margin-top: 1.5%">
+                                <option value="0" selected>
+                                </option>
+                                <option value="1">Professor</option>
+                                <option value="2">Associate Professor</option>
+                                <option value="4">Assistant Professor</option>
+                                <option value="5">Instructor</option>
+                                <option value="6">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="major">Field of Study</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="field_of_study"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="phone">Phone Number</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="phone_number"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="mobile">Mobile Number</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="mobile_number"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="regtype">Registration Type</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <select class="form-control" name="reg_type" style="width: 30%; margin-top: 1.5%">
+                                <option value="0" selected>
+                                </option>
+                                <option value="1">General</option>
+                                <option value="2">Student</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="photo">Photo</label>
+                        </td>
+                        <td>
+                            <input type="file" name="photo" accept="image/*" style="margin-top: 1.5%">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="country">Country</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="country"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="city">City</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="country"
+                                   style="width: 75%; margin-top: 1.5%; height: 30px" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="addr">Postal Address</label><span class="star">*</span>
+                        </td>
+                        <td>
+                            <textarea class="form-control" name="addres" rows="4" cols="5"
+                                      style="margin-top: 1.5%; resize: none" required></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input class="btn btn-default" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="wrap">
+        <div class="f-menu">
+            <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com"
+                                                                         style="color: red">Chapna</a></div>
+        </div>
+    </div>
+</footer>
+<script src="js/signup.js"></script>
+</body>
 </html>
