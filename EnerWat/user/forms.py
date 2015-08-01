@@ -12,6 +12,17 @@ class SignupModelForm(forms.ModelForm):
                 raise forms.ValidationError("Image file too large ( > 500kB )")
             return photo
 
+    def clean_conf_password(self):
+        password = self.cleaned_data.get('password', None)
+        conf_password = self.cleaned_data.get('conf_password', None)
+        if password and conf_password:
+            if password == conf_password:
+                return conf_password
+            else:
+                raise forms.ValidationError("Password and conf-password are not the same")
+        else:
+            raise forms.ValidationError("Password and conf-password is required")
+
     class Meta:
         model = User
         widgets = {
