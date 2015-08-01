@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^login/', 'user.views.login'),
     url(r'^api/get-news/(?P<id>\d+)', 'api.views.get_news'),
     url(r'^news/(?P<pk>\d+)', NewsDetailView.as_view(), name='news_detail'),
-    url(r'^news$', NewsListView.as_view(), name='news_list'),
+    url(r'^news/?$', NewsListView.as_view(), name='news_list'),
     url(r'^contact', 'main.views.contact'),
     url(r'^submit-paper', 'user.views.paper'),
 ]
