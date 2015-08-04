@@ -9,7 +9,7 @@
             <div class="su-box">
                 <h1>Register</h1>
 
-                <form method="POST" action="{% url 'user_signup' %}" class="cmxform" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'user_signup' %}" class="cmxform">
                     {% csrf_token %}
                     {% if form.errors %}
                         {% for field in form %}
@@ -32,7 +32,7 @@
                                 <label for="email">Email</label><span class="star">*</span>
                             </td>
                             <td>
-                                <input type="email" class="form-control" name="email"
+                                <input id="email" type="email" class="form-control" name="email"
                                        style="width: 75%; margin-top: 1.5%; height: 30px" required>
                             </td>
                         </tr>
@@ -42,7 +42,7 @@
                                 <label for="password">Password</label><span class="star">*</span>
                             </td>
                             <td>
-                                <input type="password" class="form-control" name="password"
+                                <input id="password" type="password" class="form-control" name="password"
                                        style="width: 75%; margin-top: 1.5%; height: 30px" required>
                             </td>
                         </tr>
@@ -52,28 +52,18 @@
                                 <label for="conf_password">Confirm Password</label><span class="star">*</span>
                             </td>
                             <td>
-                                <input type="password" class="form-control" name="conf_password"
+                                <input id="conf_password" type="password" class="form-control" name="conf_password"
                                        style="width: 75%; margin-top: 1.5%; height: 30px" required>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <hr align="left" size="1" width="300%"/>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="title">Title:</label>
+                                <label for="username">Username:</label><span class="star">*</span>
                             </td>
                             <td>
-                                <select name="title" class="form-control" style="width:25%">
-                                    <option value="dr">Dr.</option>
-                                    <option value="prof">Prof.</option>
-                                    <option value="mr">Mr.</option>
-                                    <option value="mrs">Mrs.</option>
-                                </select>
+                                <input id="username" type="text" class="form-control" name="username"
+                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
                             </td>
                         </tr>
 
@@ -82,7 +72,7 @@
                                 <label for="first_name">First Name</label><span class="star">*</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control" name="first_name"
+                                <input id="first_name" type="text" class="form-control" name="first_name"
                                        style="width: 75%; margin-top: 1.5%; height: 30px" required>
                             </td>
                         </tr>
@@ -92,125 +82,8 @@
                                 <label for="last_name">Last Name</label><span class="star">*</span>
                             </td>
                             <td>
-                                <input type="text" class="form-control" name="last_name"
+                                <input id="last_name" type="text" class="form-control" name="last_name"
                                        style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="education">Education</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <select class="form-control" name="education" style="width: 45%; margin-top:1.5%">
-                                    <option value="0" selected>
-                                    </option>
-                                    <option value="phd">PhD</option>
-                                    <option value="md">MD</option>
-                                    <option value="phd_can">PhD Candidate</option>
-                                    <option value="msc">MSc</option>
-                                    <option value="msc_stu">MSc Student</option>
-                                    <option value="bsc">BSc</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="degree">Degree</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <select class="form-control" name="degree" style="width: 50%; margin-top: 1.5%">
-                                    <option value="0" selected>
-                                    </option>
-                                    <option value="prof">Professor</option>
-                                    <option value="assoc_prof">Associate Professor</option>
-                                    <option value="assist_prof">Assistant Professor</option>
-                                    <option value="instr">Instructor</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="field_of_study">Field of Study</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" name="field_of_study"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="phone_number">Phone Number</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" name="phone_number"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="mobile_number">Mobile Number</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" name="mobile_number"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="reg_type">Registration Type</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <select class="form-control" name="reg_type" style="width: 30%; margin-top: 1.5%">
-                                    <option value="general">General</option>
-                                    <option value="student">Student</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="photo">Photo</label>
-                            </td>
-                            <td>
-                                <input type="file" name="photo" accept="image/*" style="margin-top: 1.5%">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="country">Country</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" name="country"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="city">City</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" name="city"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="postal_address">Postal Address</label><span class="star">*</span>
-                            </td>
-                            <td>
-                            <textarea class="form-control" name="postal_address" rows="4" cols="5"
-                                      style="margin-top: 1.5%; resize: none" required></textarea>
                             </td>
                         </tr>
                     </table>

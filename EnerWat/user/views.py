@@ -25,28 +25,14 @@ class UserSignup(View):
         form = SignupModelForm(request.POST, request.FILES)
 
         if form.is_valid():
-            title = form.cleaned_data['title']
+            username = form.cleaned_data['username']
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
-            phone_number = form.cleaned_data['phone_number']
-            mobile_number = form.cleaned_data['mobile_number']
-            education = form.cleaned_data['education']
-            degree = form.cleaned_data['degree']
-            field_of_study = form.cleaned_data['field_of_study']
-            reg_type = form.cleaned_data['reg_type']
-            country = form.cleaned_data['country']
-            city = form.cleaned_data['city']
-            postal_address = form.cleaned_data['postal_address']
-            photo = request.FILES.get('photo', None)
 
-            user = User.objects.create_user(email, email, password, title=title, first_name=first_name,
-                                            last_name=last_name,
-                                            phone_number=phone_number, mobile_number=mobile_number,
-                                            degree=degree, education=education, field_of_study=field_of_study,
-                                            reg_type=reg_type, country=country, city=city,
-                                            postal_address=postal_address, photo=photo)
+            user = User.objects.create_user(username, email, password, first_name=first_name,
+                                            last_name=last_name)
             user.save()
             return HttpResponseRedirect('signup_valid')
         else:
@@ -66,7 +52,7 @@ class UserLogin(View):
         password_empty = False
 
         if form.is_valid():
-            username = form.cleaned_data['email']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
             user = authenticate(username=username, password=password)
@@ -84,7 +70,7 @@ class UserLogin(View):
                 password_empty = True
 
             # render login page with errors
-            return render(request, 'signin.html', {
+            return render(request, self.template_name, {
                 'password_empty': password_empty,
                 'email_empty': email_empty
             })
