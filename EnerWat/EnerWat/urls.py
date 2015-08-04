@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from news.views import NewsDetailView, NewsListView
-from user.views import UserDetailView
+from user.views import UserDetailView, UserSignup
 
 urlpatterns = [
     # Examples:
@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^$', 'main.views.main'),
 
     # User views
-    url(r'^signup/?', 'user.views.signup'),
+    url(r'^signup/?', UserSignup.as_view(), name='user_signup'),
     url(r'^login/?', 'user.views.login'),
     url(r'^profile/(?P<pk>\d+)', UserDetailView.as_view(), name='user_detail'),
 

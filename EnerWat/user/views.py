@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as django_login
 from django.views.generic.detail import DetailView
+from django.views.generic.base import View
 
 from .forms import LoginForm
 from .forms import SignupModelForm
@@ -14,10 +15,13 @@ class UserDetailView(DetailView):
     model = User
 
 
-def signup(request):
-    if request.method == 'GET':
-        return render(request, 'signup.html', {'form': SignupModelForm()})
-    if request.method == 'POST':
+class UserSignup(View):
+    template_name = 'signup.html'
+
+    def get(self, request):
+        return render(request, self.template_name, {'form': SignupModelForm()})
+
+    def post(self, request):
         form = SignupModelForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -46,7 +50,7 @@ def signup(request):
             user.save()
             return HttpResponseRedirect('signup_valid')
         else:
-            return render(request, 'signup.html', {'form': form})
+            return render(request, self.template_name, {'form': form})
 
 
 def login(request):
