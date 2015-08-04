@@ -16,7 +16,7 @@ class UserDetailView(DetailView):
 
 
 class UserSignup(View):
-    template_name = 'signup.html'
+    template_name = 'user/signup.html'
 
     def get(self, request):
         return render(request, self.template_name, {'form': SignupModelForm()})
@@ -53,17 +53,17 @@ class UserSignup(View):
             return render(request, self.template_name, {'form': form})
 
 
-def login(request):
-    if request.method == 'GET':
-        return render(request, 'signin.html', {
-            'false_user': False
-        })
-    if request.method == 'POST':
+class UserLogin(View):
+    template_name = 'user/login.html'
+
+    def get(self, request):
+        return render(request, self.template_name, {'form': LoginForm(), 'false_user': False})
+
+    def post(self, request):
         form = LoginForm(request.POST)
 
         email_empty = False
         password_empty = False
-        false_user = False
 
         if form.is_valid():
             username = form.cleaned_data['email']
@@ -75,25 +75,16 @@ def login(request):
                 return HttpResponseRedirect('/user')
             else:
                 false_user = True
-                return render(request, 'signin.html', {
-                    'false_user': false_user
-                })  # render login page with errors
+                # render login page with errors
+                return render(request, self.template_name, {'false_user': false_user})
         else:
             if not request.POST.get('email', None):
                 email_empty = True
             if not request.POST.get('password', None):
                 password_empty = True
 
+            # render login page with errors
             return render(request, 'signin.html', {
                 'password_empty': password_empty,
                 'email_empty': email_empty
-            })  # render login page with errors
-    else:
-        return HttpResponseRedirect('/kire_khar')
-
-
-def paper(request):
-    if request.method == 'GET':
-        return render(request, 'send_paper.html', {})
-    if request.method == 'POST':
-        pass
+            })

@@ -1,18 +1,18 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Sign in</title>
-		<link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
-	</head>
-	<body>
-		<header class="header">
-			<div class="wrap">
-				<div class="logo"><img src="{% static 'images/IMG.png' %}"/><a href="/">EnerWat 2016</a></div>
-				<div class="clear"></div>
-				<nav class="nav" id="top-nav">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
+</head>
+<body>
+<header class="header">
+    <div class="wrap">
+        <div class="logo"><img src="{% static 'images/IMG.png' %}"/><a href="/">EnerWat 2016</a></div>
+        <div class="clear"></div>
+        <nav class="nav" id="top-nav">
             <ul>
                 <li><a href="/">Home</a></li>
                 {% if request.user.is_authenticated %}
@@ -64,44 +64,46 @@
             </ul>
             <div class="clear"></div>
         </nav>
-			</div>
-    	</header>
-	
-		<div class="wrap">
-    		<div class="content">
-				<div class="sl-box">
-					<h1>Login</h1>
-					<form class="cmxform" id="contactForm" method="POST" action="/login/" >
-						{% csrf_token %}
+    </div>
+</header>
 
-						{% if false_user %}
-						<div style="color: red">
-							Email or Password is wrong.
-						</div>
-						{% endif %}
-						<div>
-							<span><label for="email">Email</label></span>
-							<span><input type="email" id="email" name="email" required/></span>
-						</div>
-						<div>
-							<span><label for="password">Password</label></span>
-							<span><input type="password" id="password" name="password" required/></span>
-						</div>
-						<div>
-							<span><input class="submit" type="submit" value="Login"/></span>
-						</div>
-					</form>
-					<a href="/signup">Creat new account</a>
-				</div>
-			</div>
-		</div>
-			
-		<footer class="footer">
-        	<div class="wrap">
-           		<div class="f-menu">
-               		<div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com" style = "color: red">Chapna</a> </div>
-				</div>
-        	</div>
-    	</footer>
-	</body>
+<div class="wrap">
+    <div class="content">
+        <div class="sl-box">
+            <h1>Login</h1>
+
+            <form class="cmxform" id="contactForm" method="POST" action="/login/">
+                {% csrf_token %}
+
+                {% if false_user %}
+                    <div style="color: red">
+                        Email or Password is wrong.
+                    </div>
+                {% endif %}
+                <div>
+                    <span><label for="email">Email</label></span>
+                    <span><input type="email" id="email" name="email" required/></span>
+                </div>
+                <div>
+                    <span><label for="password">Password</label></span>
+                    <span><input type="password" id="password" name="password" required/></span>
+                </div>
+                <div>
+                    <span><input class="submit" type="submit" value="Login"/></span>
+                </div>
+            </form>
+            <a href="/signup">Create new account</a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="wrap">
+        <div class="f-menu">
+            <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com"
+                                                                         style="color: red">Chapna</a></div>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
