@@ -24,5 +24,4 @@ urlpatterns = [
     url(r'^news/?$', NewsListView.as_view(), name='news_list'),
 
     url(r'^contact/?', 'main.views.contact'),
-    url(r'^submit-paper/?', 'user.views.paper'),
 ]

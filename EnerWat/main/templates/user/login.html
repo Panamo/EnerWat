@@ -1,109 +1,36 @@
+{% extends 'layout.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Sign in</title>
-    <link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
-</head>
-<body>
-<header class="header">
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
     <div class="wrap">
-        <div class="logo"><img src="{% static 'images/IMG.png' %}"/><a href="/">EnerWat 2016</a></div>
-        <div class="clear"></div>
-        <nav class="nav" id="top-nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="/user/">Profile</a></li>
-                {% else %}
-                    <li><a href="/login/">Sign-In</a></li>
-                {% endif %}
+        <div class="content">
+            <div class="sl-box">
+                <h1>Login</h1>
 
-                <li>
-                    <a href="#">Seminar Information</a>
-                    <ul>
-                        <li><a href="/note">Manager Note</a></li>
-                        <li class="last"><a href="/committee">Seminar Committee</a></li>
-                        <li class="last"><a href="/goals">Seminar Goals</a></li>
-                        <li class="last"><a href="/bases">Seminar Bases</a></li>
-                    </ul>
-                </li>
+                <form class="cmxform" id="contactForm" method="POST" action="/login/">
+                    {% csrf_token %}
 
-                <li>
-                    <a href="#">Programs</a>
-                    <ul>
-                        <li class="last"><a href="/speakers">Keynote Speakers</a></li>
-                        <li class="last"><a href="competition">Competition</a></li>
-                        <li class="last"><a href="/workshops">Workshops</a></li>
-                        <li class="last"><a href="/exhibition">Exhibition</a></li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="/articles">Papers</a>
-                    <ul>
-                        <li class="last"><a href="/guide">Guide for Authors</a></li>
-                        <li class="last"><a href="/submit-paper">Submit Paper</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Cultural</a>
-                    <ul>
-                        <li class="last"><a href="/images">Images</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="/news">News</a>
-                </li>
-
-                <li><a href="/contact">Contact Us</a></li>
-            </ul>
-            <div class="clear"></div>
-        </nav>
-    </div>
-</header>
-
-<div class="wrap">
-    <div class="content">
-        <div class="sl-box">
-            <h1>Login</h1>
-
-            <form class="cmxform" id="contactForm" method="POST" action="/login/">
-                {% csrf_token %}
-
-                {% if false_user %}
-                    <div style="color: red">
-                        Email or Password is wrong.
+                    {% if false_user %}
+                        <div style="color: red">
+                            Email or Password is wrong.
+                        </div>
+                    {% endif %}
+                    <div>
+                        <span><label for="email">Email</label></span>
+                        <span><input type="email" id="email" name="email" required/></span>
                     </div>
-                {% endif %}
-                <div>
-                    <span><label for="email">Email</label></span>
-                    <span><input type="email" id="email" name="email" required/></span>
-                </div>
-                <div>
-                    <span><label for="password">Password</label></span>
-                    <span><input type="password" id="password" name="password" required/></span>
-                </div>
-                <div>
-                    <span><input class="submit" type="submit" value="Login"/></span>
-                </div>
-            </form>
-            <a href="/signup">Create new account</a>
+                    <div>
+                        <span><label for="password">Password</label></span>
+                        <span><input type="password" id="password" name="password" required/></span>
+                    </div>
+                    <div>
+                        <span><input class="submit" type="submit" value="Login"/></span>
+                    </div>
+                </form>
+                <a href="{% url 'user_signup' %}">Create new account</a>
+            </div>
         </div>
     </div>
-</div>
-
-<footer class="footer">
-    <div class="wrap">
-        <div class="f-menu">
-            <div class="copy">@ 2015 All rights reserved. Designed by <a href="mailto:chapnacomp@gmail.com"
-                                                                         style="color: red">Chapna</a></div>
-        </div>
-    </div>
-</footer>
-</body>
-</html>
+{% endblock %}

@@ -3,24 +3,21 @@
 <html>
 <head>
     <title>EnerWat2016</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link href="{% static 'css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
-    {% if request.user.is_authenticated %}
-        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
-    {% else %}
-        <link href="{% static 'css/style2.css' %}" rel="stylesheet" type="text/css" media="all"/>
-    {% endif %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="{% static 'css/front.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    {% block css %}
+    {% endblock %}
+
+
+    <!-- jQuery library -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/rhinoslider-1.02.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousewheel.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
-    <!-- 	<script type="text/javascript">
-                $(document).ready(function() {
-                    $('#slider').rhinoslider({
-                        autoPlay: true
-                    });
-                });
-
-        </script> -->
 </head>
 <body>
 <header class="header">
@@ -83,45 +80,8 @@
 </header>
 <div class="wrap">
     <div class="content">
-        <!--            <div class="slide-box">
-                        <ul id="slider">
-                            <li><img src="images/300.jpeg/" /></li>
-                            <li><img src="images/300.jpeg/" /></li>
-                            <li><img src="images/300.jpeg/" /></li>
-                            <li><img src="images/300.jpeg/" /></li>
-                        </ul>
-                    </div> -->
-        {% if not request.user.is_authenticated %}
-            <div class="s-box">
-                <h1>Login</h1>
-
-                <form class="cmxform" id="contactForm" method="POST" action="/login/">
-                    {% csrf_token %}
-
-                    <div>
-                        <span><label for="email">Email</label></span>
-                        <span><input type="email" id="name" name="email" required/></span>
-
-                    </div>
-
-                    <div>
-                        <span><label for="password">Password</label></span>
-                        <span><input type="password" id="email" name="password" required/></span>
-
-                    </div>
-
-
-                    <div>
-                        <span><input class="submit" type="submit" value="Submit"/></span>
-                    </div>
-                </form>
-            </div>
-        {% endif %}
-
-        {% block content %}{% endblock %}
-
-
-        
+        {% block content %}
+        {% endblock %}
     </div>
 </div>
 <footer class="footer">
