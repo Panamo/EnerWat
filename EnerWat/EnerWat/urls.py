@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^profile/?', login_required(UserDetailView.as_view()), name='user_detail'),
 
     # API views
-    url(r'^api/get-news/(?P<id>\d+)', GetNews.as_view(), name='api_get_news'),
+    url(r'^api/get-news/(?P<news_id>\d+)', GetNews.as_view(), name='api_get_news'),
 
     # News views
     url(r'^news/(?P<pk>\d+)', NewsDetailView.as_view(), name='news_detail'),
