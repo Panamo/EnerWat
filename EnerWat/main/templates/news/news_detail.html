@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<h1>{{ object.subject }}</h1>
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="b-box">
+        <h1>{{ object.subject }}</h1>
 
-<p>{{ object.content }}</p>
+        <p>{{ object.content }}</p>
+        <hr>
+        <p>
+            <span>Keywords: </span>{{ object.keyword }}
+        </p>
 
-<p>Keyword: {{ object.keyword }}</p>
+        <p><span>Published: </span>{{ object.date|date }}</p>
 
-<p>Published: {{ object.date|date }}</p>
-
-<p>Date: {{ now|date }}</p>
-</body>
-</html>
+        <p><span>Today: </span>{{ now|date }}</p>
+    </div>
+{% endblock %}
