@@ -25,19 +25,21 @@
         <nav class="nav" id="top-nav">
             <ul>
                 <li><a href="/">Home</a></li>
+
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'user_detail' pk=request.user.pk %}">Profile</a></li>
                 {% else %}
                     <li><a href="{% url 'user_login' %}">Sign-In</a></li>
                 {% endif %}
 
-                <li>
-                    <a href="#">Seminar Information</a>
+                <li><a href="#">Course Information</a>
                     <ul>
-                        <li><a href="/note">Manager Note</a></li>
-                        <li class="last"><a href="/committee">Seminar Committee</a></li>
-                        <li class="last"><a href="/goals">Seminar Goals</a></li>
-                        <li class="last"><a href="/bases">Seminar Bases</a></li>
+                        <li>
+                            <a href="http://ceit.aut.ac.ir/~bakhshis">Course Instructor [Dr.Bakhshi]</a>
+                        </li>
+                        <li
+                                ><a class="last" href="/bases">30TAs</a>
+                        </li>
                     </ul>
                 </li>
 
