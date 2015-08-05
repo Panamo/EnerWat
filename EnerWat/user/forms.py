@@ -32,3 +32,4 @@ class SignupModelForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput, label="Username", max_length=255)
     password = forms.CharField(widget=forms.PasswordInput, label="Password")
+    next = forms.CharField(widget=forms.HiddenInput, required=False, initial=None)

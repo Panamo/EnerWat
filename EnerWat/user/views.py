@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import authenticate, login
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView
@@ -43,13 +43,27 @@ class UserLogin(FormView):
     template_name = 'user/login.html'
     form_class = LoginForm
 
+    def get_initial(self):
+        kwargs = super(UserLogin, self).get_initial()
+        next_url = self.request.GET.get('next', None)
+        if next_url:
+            kwargs.update({'next': next_url})
+            print(next_url)
+        return kwargs
+
     def form_valid(self, form):
+        next_url = form.cleaned_data.get('next', None)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
 
+        print(next_url)
+
         user = authenticate(username=username, password=password)
-        if user:
-            django_login(self.request, user)
+        if user and not next_url:
+            login(self.request, user)
             return redirect('user_detail', pk=user.pk)
+        elif user and next_url:
+            login(self.request, user)
+            return redirect(next_url)
         else:
             return render(self.request, self.template_name, {'form': form})
