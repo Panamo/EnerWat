@@ -39,6 +39,8 @@
                     <li><a href="{% url 'user_login' %}">Sign-In</a></li>
                 {% endif %}
 
+                <li><a href="{% url 'user_logout' %}">Logout</a></li>
+
                 <li><a href="#">Course Information</a>
                     <ul>
                         <li>
@@ -47,17 +49,6 @@
                         <li
                                 ><a class="last" href="{% url 'user_staff' %}">30TAs</a>
                         </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">Programs</a>
-                    <ul>
-                        <li class="last"><a href="/speakers">Keynote Speakers</a></li>
-                        <li class="last"><a href="competition">Competition</a></li>
-                        <li class="last"><a href="/workshops">Workshops</a></li>
-                        <li class="last"><a href="/exhibition">Exhibition</a></li>
-
                     </ul>
                 </li>
 

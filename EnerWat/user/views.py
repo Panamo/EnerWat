@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView
+from django.views.generic.base import View
 
 from .forms import LoginForm
 from .forms import SignupModelForm
@@ -72,3 +73,10 @@ class UserLogin(FormView):
             return redirect(next_url)
         else:
             return render(self.request, self.template_name, {'form': form})
+
+
+class UserLogout(View):
+    def get(self, request):
+        if request.user.is_authenticated():
+            logout(request)
+        return redirect('home')
