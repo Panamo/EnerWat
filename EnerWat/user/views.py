@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+
 from django.contrib.auth import authenticate, login as django_login
+
 from django.views.generic.detail import DetailView
+
 from django.views.generic.list import ListView
+
 from django.views.generic.base import View
 
 from .forms import LoginForm
