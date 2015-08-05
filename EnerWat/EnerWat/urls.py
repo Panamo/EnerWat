@@ -5,6 +5,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from news.views import NewsDetailView, NewsListView
 from user.views import UserDetailView, UserSignup, UserLogin, StaffListView
+from main.views import ContactView, MainView
 
 urlpatterns = [
     # Examples:
@@ -12,7 +13,8 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'main.views.main'),
+    url(r'^$', MainView.as_view(), name='home'),
+    url(r'contact/?', ContactView.as_view(), name='contact'),
 
     # User views
     url(r'^signup/?', staff_member_required(UserSignup.as_view(), login_url='user_login'), name='user_signup'),
@@ -26,6 +28,4 @@ urlpatterns = [
     # News views
     url(r'^news/(?P<pk>\d+)', NewsDetailView.as_view(), name='news_detail'),
     url(r'^news/?$', NewsListView.as_view(), name='news_list'),
-
-    url(r'^contact/?', 'main.views.contact'),
 ]

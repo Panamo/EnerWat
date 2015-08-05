@@ -1,14 +1,21 @@
 from django.shortcuts import render
+from django.views.generic.base import View
 from user.forms import LoginForm
 
 
 # Create your views here.
-def main(request):
-    login_model_form = LoginForm()
-    return render(request, 'index.html', {
-        'form': login_model_form
-    })
+class MainView(View):
+    template_name = 'main/index.html'
+
+    def get(self, request):
+        login_model_form = LoginForm()
+        return render(request, self.template_name, {
+            'form': login_model_form
+        })
 
 
-def contact(request):
-    pass
+class ContactView(View):
+    template_name = 'main/contact.html'
+
+    def get(self, request):
+        return render(request, self.template_name)

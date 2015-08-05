@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="b-box">
+        <h1>Contact</h1>
+
+        <div class="form">
+            <form class="cmxform" id="contactForm" method="post">
+                <div>
+                    <span><label for="name">Name</label></span>
+                    <span><input type="text" id="name" name="name"/></span>
+                </div>
+                <div>
+                    <span><label for="email">Email</label></span>
+                    <span><input type="text" id="email" name="email"/></span>
+                </div>
+                <div>
+                    <span><label for="subject">Subject</label></span>
+                    <span><textarea id="subject" name="Subject"></textarea></span>
+                </div>
+                <div>
+                    <span><input class="submit" type="submit" value="Submit"/></span>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
