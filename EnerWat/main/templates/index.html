@@ -14,20 +14,7 @@
 
             <form class="cmxform" id="contactForm" method="POST" action="/login/">
                 {% csrf_token %}
-
-                <div>
-                    <span><label for="email">Email</label></span>
-                    <span><input type="email" id="email" name="email" required/></span>
-
-                </div>
-
-                <div>
-                    <span><label for="password">Password</label></span>
-                    <span><input type="password" id="password" name="password" required/></span>
-
-                </div>
-
-
+                {{ form.as_p }}
                 <div>
                     <span><input class="submit" type="submit" value="Submit"/></span>
                 </div>

@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<h1>News</h1>
-<ul>
-    {% for news in object_list %}
-        <li><a href="{% url 'news_detail' pk=news.pk %}">{{ news.date|date }} - {{ news.subject }}</a></li>
-    {% empty %}
-        <li>No articles yet.</li>
-    {% endfor %}
-</ul>
-
-</body>
-</html>
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="b-box">
+        <h1>News</h1>
+        <ul>
+            {% for news in object_list %}
+                <li>
+                    <a href="{% url 'news_detail' pk=news.pk %}"><h2>{{ news.date|date }} - {{ news.subject }}</h2></a>
+                </li>
+            {% empty %}
+                <li>
+                    <h2>No news yet.</h2>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
