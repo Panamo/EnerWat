@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login as django_login
 from django.views.generic.detail import DetailView
 from django.views.generic.base import View
@@ -34,7 +34,7 @@ class UserSignup(View):
             user = User.objects.create_user(username, email, password, first_name=first_name,
                                             last_name=last_name)
             user.save()
-            return HttpResponseRedirect('signup_valid')
+            return redirect('/')
         else:
             return render(request, self.template_name, {'form': form})
 
@@ -54,7 +54,7 @@ class UserLogin(View):
             user = authenticate(username=username, password=password)
             if user:
                 django_login(request, user)
-                return HttpResponseRedirect('/user')
+                return redirect('user_detail', pk=user.pk)
             else:
                 return render(request, self.template_name, {'form': form})
         else:
