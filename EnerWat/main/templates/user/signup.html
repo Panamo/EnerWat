@@ -11,81 +11,8 @@
 
                 <form method="POST" action="{% url 'user_signup' %}" class="cmxform">
                     {% csrf_token %}
-                    {% if form.errors %}
-                        {% for field in form %}
-                            {{ field }}
-                            {% for error in field.errors %}
-                                <div class="alert alert-error">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                            <div class="alert alert-error">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
                     <table style="width: 50%">
-                        <tr>
-                            <td>
-                                <label for="email">Email</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="email" type="email" class="form-control" name="email"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="password">Password</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="password" type="password" class="form-control" name="password"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="conf_password">Confirm Password</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="conf_password" type="password" class="form-control" name="conf_password"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="username">Username:</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="username" type="text" class="form-control" name="username"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="first_name">First Name</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="first_name" type="text" class="form-control" name="first_name"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label for="last_name">Last Name</label><span class="star">*</span>
-                            </td>
-                            <td>
-                                <input id="last_name" type="text" class="form-control" name="last_name"
-                                       style="width: 75%; margin-top: 1.5%; height: 30px" required>
-                            </td>
-                        </tr>
+                        {{ form.as_table }}
                     </table>
                     <input class="btn btn-default" type="submit" value="Submit">
                 </form>

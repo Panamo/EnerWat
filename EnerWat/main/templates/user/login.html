@@ -9,22 +9,9 @@
             <div class="sl-box">
                 <h1>Login</h1>
 
-                <form class="cmxform" id="contactForm" method="POST" action="/login/">
+                <form class="cmxform" id="contactForm" method="POST" action="{% url 'user_login' %}">
                     {% csrf_token %}
-
-                    {% if false_user %}
-                        <div style="color: red">
-                            Email or Password is wrong.
-                        </div>
-                    {% endif %}
-                    <div>
-                        <span><label for="username">Email</label></span>
-                        <span><input type="text" id="username" name="username" required/></span>
-                    </div>
-                    <div>
-                        <span><label for="password">Password</label></span>
-                        <span><input type="password" id="password" name="password" required/></span>
-                    </div>
+                    {{ form.as_p }}
                     <div>
                         <span><input class="submit" type="submit" value="Login"/></span>
                     </div>

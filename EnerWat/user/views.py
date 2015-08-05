@@ -22,7 +22,7 @@ class UserSignup(View):
         return render(request, self.template_name, {'form': SignupModelForm()})
 
     def post(self, request):
-        form = SignupModelForm(request.POST, request.FILES)
+        form = SignupModelForm(request.POST)
 
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -43,14 +43,10 @@ class UserLogin(View):
     template_name = 'user/login.html'
 
     def get(self, request):
-        return render(request, self.template_name, {'form': LoginForm(), 'false_user': False})
+        return render(request, self.template_name, {'form': LoginForm()})
 
     def post(self, request):
         form = LoginForm(request.POST)
-
-        email_empty = False
-        password_empty = False
-
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -60,17 +56,6 @@ class UserLogin(View):
                 django_login(request, user)
                 return HttpResponseRedirect('/user')
             else:
-                false_user = True
-                # render login page with errors
-                return render(request, self.template_name, {'false_user': false_user})
+                return render(request, self.template_name, {'form': form})
         else:
-            if not request.POST.get('email', None):
-                email_empty = True
-            if not request.POST.get('password', None):
-                password_empty = True
-
-            # render login page with errors
-            return render(request, self.template_name, {
-                'password_empty': password_empty,
-                'email_empty': email_empty
-            })
+            return render(request, self.template_name, {'form': form})
