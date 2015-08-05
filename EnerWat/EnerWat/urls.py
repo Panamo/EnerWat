@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
 from news.views import NewsDetailView, NewsListView
-from user.views import UserDetailView, UserSignup, UserLogin
+from user.views import UserDetailView, UserSignup, UserLogin, StaffListView
 
 urlpatterns = [
     # Examples:
@@ -15,8 +15,9 @@ urlpatterns = [
     url(r'^$', 'main.views.main'),
 
     # User views
-    url(r'^signup/?', staff_member_required(UserSignup.as_view()), name='user_signup'),
+    url(r'^signup/?', staff_member_required(UserSignup.as_view(), login_url='user_login'), name='user_signup'),
     url(r'^login/?', UserLogin.as_view(), name='user_login'),
+    url(r'^staff/?', StaffListView.as_view(), name='user_staff'),
     url(r'^profile/(?P<pk>\d+)', login_required(UserDetailView.as_view()), name='user_detail'),
 
     # API views

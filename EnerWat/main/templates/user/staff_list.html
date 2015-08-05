@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="b-box">
+        {% for staff in object_list %}
+            {% if staff.is_staff %}
+                <h1>
+                    {{ staff.first_name }} {{ staff.last_name }} [{{ staff.username }}]
+                </h1>
+                <p>
+                    <a href="mailto:{{ staff.email }}">{{ staff.email }}</a>
+                </p>
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
