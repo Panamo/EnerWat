@@ -15,6 +15,11 @@ from .models import User
 class UserDetailView(DetailView):
     model = User
 
+    def dispatch(self, request, *args, **kwargs):
+        kwargs.update({'pk': str(request.user.pk)})
+        self.kwargs.update({'pk': str(request.user.pk)})
+        return super(UserDetailView, self).dispatch(request, *args, **kwargs)
+
 
 class StaffListView(ListView):
     model = User
@@ -61,7 +66,7 @@ class UserLogin(FormView):
         user = authenticate(username=username, password=password)
         if user and not next_url:
             login(self.request, user)
-            return redirect('user_detail', pk=user.pk)
+            return redirect('user_detail')
         elif user and next_url:
             login(self.request, user)
             return redirect(next_url)

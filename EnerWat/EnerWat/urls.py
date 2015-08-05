@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^signup/?', staff_member_required(UserSignup.as_view(), login_url='user_login'), name='user_signup'),
     url(r'^login/?', UserLogin.as_view(), name='user_login'),
     url(r'^staff/?', StaffListView.as_view(), name='user_staff'),
-    url(r'^profile/(?P<pk>\d+)', login_required(UserDetailView.as_view()), name='user_detail'),
+    url(r'^profile/?', login_required(UserDetailView.as_view()), name='user_detail'),
 
     # API views
     url(r'^api/get-news/(?P<id>\d+)', GetNews.as_view(), name='api_get_news'),

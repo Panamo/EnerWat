@@ -34,7 +34,7 @@
                 <li><a href="/">Home</a></li>
 
                 {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'user_detail' pk=request.user.pk %}">Profile</a></li>
+                    <li><a href="{% url 'user_detail' %}">Profile</a></li>
                 {% else %}
                     <li><a href="{% url 'user_login' %}">Sign-In</a></li>
                 {% endif %}
