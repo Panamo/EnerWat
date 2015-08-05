@@ -6,6 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from news.views import NewsDetailView, NewsListView
 from user.views import UserDetailView, UserSignup, UserLogin, StaffListView
 from main.views import ContactView, MainView
+from api.views import GetNews
 
 urlpatterns = [
     # Examples:
@@ -23,7 +24,7 @@ urlpatterns = [
     url(r'^profile/(?P<pk>\d+)', login_required(UserDetailView.as_view()), name='user_detail'),
 
     # API views
-    url(r'^api/get-news/(?P<id>\d+)', 'api.views.get_news'),
+    url(r'^api/get-news/(?P<id>\d+)', GetNews.as_view(), name='api_get_news'),
 
     # News views
     url(r'^news/(?P<pk>\d+)', NewsDetailView.as_view(), name='news_detail'),
