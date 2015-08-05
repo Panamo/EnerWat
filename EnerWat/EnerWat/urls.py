@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from news.views import NewsDetailView, NewsListView
 from user.views import UserDetailView, UserSignup, UserLogin
@@ -14,7 +15,7 @@ urlpatterns = [
     url(r'^$', 'main.views.main'),
 
     # User views
-    url(r'^signup/?', UserSignup.as_view(), name='user_signup'),
+    url(r'^signup/?', staff_member_required(UserSignup.as_view()), name='user_signup'),
     url(r'^login/?', UserLogin.as_view(), name='user_login'),
     url(r'^profile/(?P<pk>\d+)', login_required(UserDetailView.as_view()), name='user_detail'),
 
